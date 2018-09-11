@@ -1,8 +1,6 @@
-count = 30;
-
+var count = 60;
+var at = 0;
 var win = Math.floor(Math.random() * count) + 1;
-
-console.log(win);
 
 function numbers() {
   for(var i = 1; i <= count; i++) {
@@ -14,12 +12,18 @@ function numbers() {
 }
 
 function choice(i) {
+  at++;
   if(i == win) {
     $(".number" + i).css("color","#0f1");
     if(win == 13) {
       $(".result").append("<p>RIGHT! my number is the lucky " + win + "!</p>");
     } else {
       $(".result").append("<p>RIGHT! my number is " + win + "!</p>");
+    }
+    if(at == 1) {
+      $(".result").append("<p>It only took you " + at + " attempt to guess my number. Congrats!</p>");
+    } else {
+      $(".result").append("<p>It took you " + at + " attempts to guess my number!</p>");
     }
     $(".result").append("<button onClick='restart()'>play again</button>");
   } else {
